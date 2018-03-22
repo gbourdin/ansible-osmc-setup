@@ -4,7 +4,7 @@
     dest: /home/osmc/src/
 
 - name: Extract rtorrent
-  command: tar xzf http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz
+  command: tar xzf rtorrent-0.9.6.tar.gz
   args:
     chdir: /home/osmc/src/
 
