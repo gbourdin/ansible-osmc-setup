@@ -4,6 +4,13 @@
     state: stopped
   become: yes
 
+- name: Install lxml to manage guisettings
+  apt:
+    name: python-lxml
+    state: latest
+    update_cache: yes
+  become: yes
+
 - name: Set the http port for kodi to 8008
   xml:
     path: /home/osmc/.kodi/userdata/guisettings.xml
