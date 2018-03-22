@@ -11,11 +11,11 @@
     update_cache: yes
   become: yes
 
-- name: Set the http port for kodi to 8008
+- name: Change the default web interface port
   xml:
     path: /home/osmc/.kodi/userdata/guisettings.xml
     xpath: services/webserverport
-    value: "8080"
+    value: '"{{kodi_web_interface_port}}"'
 
 - name: Install nginx
   apt:

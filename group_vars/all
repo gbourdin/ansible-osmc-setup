@@ -1,2 +1,5 @@
 ansible_ssh_user: osmc
 ansible_ssh_pass: osmc
+
+# Ports and settings
+kodi_web_interface_port: 8080
