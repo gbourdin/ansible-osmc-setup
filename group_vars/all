@@ -8,7 +8,7 @@ kodi_web_interface_port: 8080
 # This will be specific to your settings and should be overwritten, but
 # you must at least have a downloads mount. Take this as an example
 # You should put your settings for this variable in:
-# configure-mounts/vars/main.yml
+# roles/configure-mounts/vars/main.yml
 
 mounts:
   - { name: "Downloads",
