@@ -1,0 +1,31 @@
+- name: Stop kodi
+  service:
+    name: mediacenter
+    state: stopped
+  become: yes
+
+- name: Set the http port for kodi to 8008
+  xml:
+    path: /home/osmc/.kodi/userdata/guisettings.xml
+    xpath: services/webserverport
+    value: "8080"
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Install php
+  apt:
+    name: php7.0-fpm
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Start kodi
+  service:
+    name: mediacenter
+    state: started
+  become: yes
