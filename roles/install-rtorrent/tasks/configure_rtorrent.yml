@@ -1,0 +1,56 @@
+- name: Add rtorrent group
+  group:
+    name: "{{ rtorrent_group }}"
+    state: present
+  become: yes
+
+- name: Add rtorrent user
+  user:
+    name: "{{ rtorrent_user }}"
+    state: present
+    group: "{{ rtorrent_group }}"
+    shell: /bin/bash
+  become: yes
+
+- name: Add rtorrent home directory
+  file:
+    path: "{{ rtorrent_home }}"
+    state: directory
+    owner: "{{ rtorrent_user }}"
+    group: "{{ rtorrent_group }}"
+  become: yes
+
+- name: Add rtorrent session directory
+  file:
+    path: "{{ rtorrent_session_directory }}"
+    state: directory
+    owner: "{{ rtorrent_user }}"
+    group: "{{ rtorrent_group }}"
+  become: yes
+
+- name: Add watch directory
+  file:
+    path: "{{ rtorrent_watch_directory }}"
+    state: directory
+
+- name: Copy rtorrent.rc
+  template:
+    src: rtorrent.rc.j2
+    dest:  "{{ rtorrent_home }}/.rtorrent.rc"
+    owner: "{{ rtorrent_user }}"
+    group: "{{ rtorrent_group }}"
+  become: yes
+
+- name: Copy rtorrent systemd unit file
+  template:
+    src: rtorrent.service.j2
+    dest: /etc/systemd/system/rtorrent.service
+  become: yes
+
+- name: Enable rtorrent service
+  command: systemctl enable rtorrent.service
+  become: yes
+
+- name: Start rtorrent
+  command: systemctl start rtorrent.service
+  become: yes

@@ -1,0 +1,30 @@
+- name: Download libtorrent
+  get_url:
+    url: https://github.com/rakshasa/libtorrent/archive/0.13.6.tar.gz
+    dest: /home/osmc/src/
+
+- name: Extract libtorrent
+  command: tar xzf 0.13.6.tar.gz
+  args:
+    chdir: /home/osmc/src/
+
+- name: Autogen libtorrent
+  shell: ./autogen.sh
+  args:
+    chdir: /home/osmc/src/libtorrent-0.13.6/
+
+- name: Configure libtorrent
+  shell: ./configure
+  args:
+    chdir: /home/osmc/src/libtorrent-0.13.6/
+
+- name: Build libtorrent
+  shell: make
+  args:
+    chdir: /home/osmc/src/libtorrent-0.13.6/
+
+- name: Install libtorrent
+  shell: make install
+  args:
+    chdir: /home/osmc/src/libtorrent-0.13.6/
+  become: yes
