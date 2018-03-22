@@ -21,14 +21,12 @@
   apt:
     name: nginx
     state: latest
-    update_cache: yes
   become: yes
 
 - name: Install php
   apt:
     name: php-fpm
     state: latest
-    update_cache: yes
   become: yes
 
 - name: Start kodi
