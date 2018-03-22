@@ -1,0 +1,25 @@
+- name: Create mount points for all the shares
+  file:
+    path: "{{ item.mount_point }}"
+    state: directory
+  become: yes
+  with_items: "{{ mounts }}"
+
+- name: Install nfs driver
+  apt:
+    name: nfs-common
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Add all mountpoints to fstab and mount them
+  mount:
+    path: "{{ item.mount_point }}"
+    src: "{{ item.device }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.options }}"
+    passno: "{{ item.passno }}"
+    dump: "{{ item.dump }}"
+    state: mounted
+  with_items: "{{ mounts }}"
+  become: yes

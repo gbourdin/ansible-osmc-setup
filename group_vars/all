@@ -3,3 +3,27 @@ ansible_ssh_pass: osmc
 
 # Ports and settings
 kodi_web_interface_port: 8080
+
+
+# This will be specific to your settings and should be overwritten, but
+# you must at least have a downloads mount. Take this as an example
+# You should put your settings for this variable in:
+# configure-mounts/vars/main.yml
+
+mounts:
+  - { name: "Downloads",
+      device: "10.0.0.100:/nfs/downloads",
+      mount_point: "/mnt/downloads",
+      fstype: "nfs",
+      options: "noatime,noauto,x-systemd.automount,async,nfsvers=3,rsize=65536,wsize=65536,nolock,nofail,local_lock=all,soft,retrans=2,tcp",
+      dump: 0,
+      passno: 0
+    }
+  - { name: "Music",
+      device: "10.0.0.100:/nfs/music",
+      mount_point: "/mnt/Music",
+      fstype: "nfs",
+      options: "noatime,noauto,x-systemd.automount,async,nfsvers=2",
+      dump: 0,
+      passno: 0
+    }
