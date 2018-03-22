@@ -1,10 +1,10 @@
 - name: Download rtorrent
   get_url:
-    url: https://github.com/rakshasa/rtorrent/archive/0.9.6.tar.gz
+    url: http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz
     dest: /home/osmc/src/
 
 - name: Extract rtorrent
-  command: tar xzf 0.9.6.tar.gz
+  command: tar xzf http://rtorrent.net/downloads/rtorrent-0.9.6.tar.gz
   args:
     chdir: /home/osmc/src/
 
