@@ -2,3 +2,4 @@
   roles:
     - install-nginx
     - configure-mounts
+    - install-rtorrent

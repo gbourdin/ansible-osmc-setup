@@ -1,0 +1,27 @@
+- name: Create src directory
+  file:
+    path: /home/osmc/src
+    state: directory
+
+- name: Download xmlrpc-c
+  subversion:
+    repo: http://svn.code.sf.net/p/xmlrpc-c/code/advanced
+    dest: /home/osmc/src/xmlrpc-c/
+    update: yes
+    force: yes
+
+- name: Configure xmlrpc-c
+  shell: ./configure
+  args:
+    chdir: /home/osmc/src/xmlrpc-c/
+
+- name: Build xmlrpc-c
+  shell: make
+  args:
+    chdir: /home/osmc/src/xmlrpc-c/
+
+- name: Install xmlrpc-c
+  shell: make install
+  args:
+    chdir: /home/osmc/src/xmlrpc-c/
+  become: yes

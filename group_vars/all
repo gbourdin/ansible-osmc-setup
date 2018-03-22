@@ -3,17 +3,33 @@ ansible_ssh_pass: osmc
 
 # Ports and settings
 kodi_web_interface_port: 8080
+downloads_mount_point: "/mnt/downloads"
+
+# rtorrent config
+rtorrent_user: rtorrent
+rtorrent_group: rtorrent
+rtorrent_home: /home/rtorrent
+rtorrent_session_directory: /home/rtorrent/.session
+rtorrent_watch_directory: /mnt/downloads/.watch
+rtorrent_port_start: 54321
+rtorrent_port_end: 54321
+rtorrent_download_rate: 1200
+rtorrent_upload_rate: 15
+rtorrent_max_uploads: 10
+rtorrent_max_downloads_global: 2
+rtorrent_max_uploads_global: 20
+rtorrent_scgi_port: 5000
 
 
 # This will be specific to your settings and should be overwritten, but
-# you must at least have a downloads mount. Take this as an example
+# you should at least have a downloads mount. Take this as an example
 # You should put your settings for this variable in:
-# configure-mounts/vars/main.yml
+# roles/configure-mounts/vars/main.yml
 
 mounts:
   - { name: "Downloads",
       device: "10.0.0.100:/nfs/downloads",
-      mount_point: "/mnt/downloads",
+      mount_point: "{{ downloads_mount_point }}",
       fstype: "nfs",
       options: "noatime,noauto,x-systemd.automount,async,nfsvers=3,rsize=65536,wsize=65536,nolock,nofail,local_lock=all,soft,retrans=2,tcp",
       dump: 0,

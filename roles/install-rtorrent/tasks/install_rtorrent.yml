@@ -1,0 +1,34 @@
+- name: Download rtorrent
+  get_url:
+    url: https://github.com/rakshasa/rtorrent/archive/0.9.6.tar.gz
+    dest: /home/osmc/src/
+
+- name: Extract rtorrent
+  command: tar xzf 0.9.6.tar.gz
+  args:
+    chdir: /home/osmc/src/
+
+- name: Autogen rtorrent
+  shell: ./autogen.sh
+  args:
+    chdir: /home/osmc/src/rtorrent-0.9.6/
+
+- name: Configure rtorrent
+  shell: ./configure --with-xmlrpc-c=/usr/local/bin/xmlrpc-c-config
+  args:
+    chdir: /home/osmc/src/rtorrent-0.9.6/
+
+- name: Build rtorrent
+  shell: make
+  args:
+    chdir: /home/osmc/src/rtorrent-0.9.6/
+
+- name: Install rtorrent
+  shell: make install
+  args:
+    chdir: /home/osmc/src/rtorrent-0.9.6/
+  become: yes
+
+- name: Run ldconfig
+  command: ldconfig
+  become: yes

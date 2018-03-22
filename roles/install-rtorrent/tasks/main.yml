@@ -1,0 +1,6 @@
+---
+- import_tasks: install_dependencies.yml
+- import_tasks: install_xmlrpc-c.yml
+- import_tasks: install_libtorrent.yml
+- import_tasks: install_rtorrent.yml
+- import_tasks: configure_rtorrent.yml
