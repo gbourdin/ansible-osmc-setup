@@ -1,10 +1,10 @@
 - name: Download libtorrent
   get_url:
-    url: https://github.com/rakshasa/libtorrent/archive/0.13.6.tar.gz
+    url: http://rtorrent.net/downloads/libtorrent-0.13.6.tar.gz
     dest: /home/osmc/src/
 
 - name: Extract libtorrent
-  command: tar xzf 0.13.6.tar.gz
+  command: tar xzf libtorrent-0.13.6.tar.gz
   args:
     chdir: /home/osmc/src/
 
