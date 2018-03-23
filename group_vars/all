@@ -23,6 +23,12 @@ rtorrent_scgi_port: 5000
 # rutorrent config
 rutorrent_rpc_mountpoint: /RPC2
 
+# Sickrage config
+sickrage_restore_backup: false
+sickrage_web_user: username
+sickrage_web_pass: changeme
+sickrage_user: sickrage
+sickrage_group: sickrage
 
 # This will be specific to your settings and should be overwritten, but
 # you should at least have a downloads mount. Take this as an example
