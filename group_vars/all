@@ -20,6 +20,9 @@ rtorrent_max_downloads_global: 2
 rtorrent_max_uploads_global: 20
 rtorrent_scgi_port: 5000
 
+# rutorrent config
+rutorrent_rpc_mountpoint: /RPC2
+
 
 # This will be specific to your settings and should be overwritten, but
 # you should at least have a downloads mount. Take this as an example
