@@ -30,6 +30,7 @@ sickrage_web_pass: changeme
 sickrage_user: sickrage
 sickrage_group: sickrage
 sickrage_directory: /opt/sickrage
+sickrage_repo_url: https://github.com/SiCKRAGE/SickRage.git
 
 # couchpotato config
 couchpotato_restore_backup: false

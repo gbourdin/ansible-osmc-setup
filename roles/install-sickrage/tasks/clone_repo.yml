@@ -3,7 +3,7 @@
     clone: yes
     update: yes
     dest: "{{ sickrage_directory }}"
-    repo: https://github.com/SiCKRAGE/SickRage.git
+    repo: "{{ sickrage_repo_url }}"
     force: yes
   become: yes
 
