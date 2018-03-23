@@ -1,0 +1,82 @@
+- name: Install dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  become: yes
+  with_items:
+    - git
+    - python2.7
+    - python-lxml
+    - python-openssl
+
+- name: Add couchpotato group
+  group:
+    name: "{{ couchpotato_group }}"
+    state: present
+  become: yes
+
+- name: Add couchpotato user
+  user:
+    name: "{{ couchpotato_user }}"
+    state: present
+    group: "{{ couchpotato_group }}"
+    shell: /bin/bash
+  become: yes
+
+- name: Add couchpotato user to the osmc group
+  user:
+    name: "{{ couchpotato_user }}"
+    groups: osmc
+    append: yes
+  become: yes
+
+- name: Add couchpotato home directory
+  file:
+    path: "{{ couchpotato_home }}"
+    state: directory
+    owner: "{{ couchpotato_user }}"
+    group: "{{ couchpotato_group }}"
+  become: yes
+
+- name: Clone the couchpotato repo
+  git:
+    clone: yes
+    update: yes
+    dest: "{{ couchpotato_directory }}"
+    repo: "{{ couchpotato_repo_url }}"
+    force: yes
+  become: yes
+
+- name: Chown the clone directory
+  command: chown -R {{ couchpotato_user }}:{{ couchpotato_group }} {{ couchpotato_directory }}
+  become: yes
+
+- name: Copy couchpotato systemd unit file
+  command: cp {{ couchpotato_directory }}/init/couchpotato.service /etc/systemd/system/couchpotato.service
+  become: yes
+
+- name: Fix exec start path
+  ini_file:
+    path: /etc/systemd/system/couchpotato.service
+    section: Service
+    option: ExecStart
+    value: "{{ couchpotato_directory}}/CouchPotato.py"
+    no_extra_spaces: yes
+  become: yes
+
+- name: Ensure couchpotato.service has the right permissions
+  file:
+    path: /etc/systemd/system/couchpotato.service
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: Enable couchpotato service
+  command: systemctl enable couchpotato.service
+  become: yes
+
+- name: Start couchpotato
+  command: systemctl start couchpotato.service
+  become: yes
