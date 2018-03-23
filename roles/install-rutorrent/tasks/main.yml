@@ -1,0 +1,79 @@
+- name: Install dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  become: yes
+  with_items:
+    - php7.0
+    - php7.0-cli
+    - php7.0-curl
+    - php7.0-xmlrpc
+
+- name: Remove any existing installation
+  file:
+    path: /opt/rutorrent
+    state: absent
+  become: yes
+
+- name: Download rutorrent
+  get_url:
+    url: https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz
+    dest: /opt/ruTorrent-3.8.tar.gz
+  become: yes
+
+
+- name: Extract rutorrent
+  command: tar xzf ruTorrent-3.8.tar.gz
+  args:
+    chdir: /opt/
+  become: yes
+
+- name: Rename directory to just rutorrent
+  command: mv ruTorrent-3.8 rutorrent
+  args:
+    chdir:
+      /opt/
+  become: yes
+
+- name: Copy config.php
+  template:
+    src: config.php.j2
+    dest:  "/opt/rutorrent/conf/config.php"
+    owner: "www-data"
+    group: "www-data"
+  become: yes
+
+- name: Change ownership of the rutorrent directory
+  command: chown -R www-data:www-data rutorrent
+  args:
+    chdir:
+      /opt/
+  become: yes
+
+- name: Upload nginx conf
+  template:
+    src: rutorrent.conf.j2
+    dest:  /etc/nginx/sites-available/rutorrent.conf
+    owner: www-data
+    group: www-data
+  become: yes
+
+- name: Disable default site if enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  become: yes
+
+- name: Enable rutorrent
+  file:
+    src: /etc/nginx/sites-available/rutorrent.conf
+    dest: /etc/nginx/sites-enabled/rutorrent.conf
+    owner: www-data
+    group: www-data
+    state: link
+  become: yes
+
+- name: Reload nginx
+  command: service nginx reload
+  become: yes
