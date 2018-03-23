@@ -31,6 +31,13 @@ sickrage_user: sickrage
 sickrage_group: sickrage
 sickrage_directory: /opt/sickrage
 
+# couchpotato config
+couchpotato_restore_backup: false
+couchpotato_user: couchpotato
+couchpotato_group: couchpotato
+couchpotato_directory: /opt/CouchPotatoServer
+couchpotato_home: /home/couchpotato
+
 # This will be specific to your settings and should be overwritten, but
 # you should at least have a downloads mount. Take this as an example
 # You should put your settings for this variable in:
