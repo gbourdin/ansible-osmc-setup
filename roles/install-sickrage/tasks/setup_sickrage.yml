@@ -14,6 +14,13 @@
     value: "{{ sickrage_web_pass }}"
   become: yes
 
+- name: Ensure config.ini has the right permissions
+  file:
+    path: "{{ sickrage_directory }}/config.ini"
+    owner: "{{ sickrage_user }}"
+    group: "{{ sickrage_group }}"
+  become: yes
+
 - name: Copy sickrage systemd unit file
   command: cp {{ sickrage_directory }}/runscripts/init.systemd /etc/systemd/system/sickrage.service
   become: yes
