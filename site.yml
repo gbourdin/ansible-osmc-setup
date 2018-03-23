@@ -3,3 +3,4 @@
     - install-nginx
     - configure-mounts
     - install-rtorrent
+    - install-rutorrent
