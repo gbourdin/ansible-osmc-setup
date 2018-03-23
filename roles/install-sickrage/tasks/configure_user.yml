@@ -1,0 +1,20 @@
+- name: Add sickrage group
+  group:
+    name: "{{ sickrage_group }}"
+    state: present
+  become: yes
+
+- name: Add sickrage user
+  user:
+    name: "{{ sickrage_user }}"
+    state: present
+    group: "{{ sickrage_group }}"
+    shell: /bin/bash
+  become: yes
+
+- name: Add sickrage user to the osmc group
+  user:
+    name: "{{ sickrage_user }}"
+    groups: osmc
+    append: yes
+  become: yes
