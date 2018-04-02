@@ -7,3 +7,5 @@
   with_items:
     - git
     - python2.7
+    - nodejs
+    - nodejs-legacy
