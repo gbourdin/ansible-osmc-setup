@@ -7,7 +7,7 @@
   with_items:
     - git
     - python2.7
-    - unrar-free
+    - unrar
     - git-core
     - openssl
     - libssl-dev
