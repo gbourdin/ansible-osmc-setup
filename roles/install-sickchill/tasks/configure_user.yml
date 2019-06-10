@@ -1,20 +1,21 @@
-- name: Add sickrage group
+- name: Add sickchill group
   group:
-    name: "{{ sickrage_group }}"
+    name: "{{ sickchill_group }}"
     state: present
   become: yes
 
-- name: Add sickrage user
+- name: Add sickchill user
   user:
-    name: "{{ sickrage_user }}"
+    name: "{{ sickchill_user }}"
     state: present
-    group: "{{ sickrage_group }}"
+    group: "{{ sickchill_group }}"
+    home: "/var/lib/sickchill"
     shell: /bin/bash
   become: yes
 
-- name: Add sickrage user to the osmc group
+- name: Add sickchill user to the osmc group
   user:
-    name: "{{ sickrage_user }}"
+    name: "{{ sickchill_user }}"
     groups: osmc
     append: yes
   become: yes

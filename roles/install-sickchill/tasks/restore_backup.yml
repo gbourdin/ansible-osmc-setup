@@ -1,34 +1,18 @@
-- name: Stop sickrage
-  command: systemctl stop sickrage.service
+- name: Stop sickchill
+  command: systemctl stop sickchill.service
   become: yes
 
 - name: Copy backed up files
   copy:
     src: "{{ item }}"
-    dest: "{{ sickrage_directory}}/{{ item }}"
-    owner: "{{ sickrage_user }}"
-    group: "{{ sickrage_group }}"
+    dest: "{{ sickchill_directory}}/{{ item }}"
+    owner: "{{ sickchill_user }}"
+    group: "{{ sickchill_group }}"
   become: yes
   with_items:
-    - cache.db
     - config.ini
-    - failed.db
     - sickbeard.db
 
-- name: Remove (if exists) previous cache dir
-  file:
-    path: "{{ sickrage_directory}}/cache"
-    state: absent
-  become: yes
-
-- name: Extract cache.tar.gz
-  unarchive:
-    src: cache.tar.gz
-    dest: "{{ sickrage_directory}}"
-    owner: "{{ sickrage_user }}"
-    group: "{{ sickrage_group }}"
-  become: yes
-
-- name: Start sickrage
-  command: systemctl start sickrage.service
+- name: Start sickchill
+  command: systemctl start sickchill.service
   become: yes
