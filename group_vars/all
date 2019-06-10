@@ -23,14 +23,14 @@ rtorrent_scgi_port: 5000
 # rutorrent config
 rutorrent_rpc_mountpoint: /RPC2
 
-# Sickrage config
-sickrage_restore_backup: false
-sickrage_web_user: username
-sickrage_web_pass: changeme
-sickrage_user: sickrage
-sickrage_group: sickrage
-sickrage_directory: /opt/sickrage
-sickrage_repo_url: https://github.com/SiCKRAGE/SickRage.git
+# SickChill config
+sickchill_restore_backup: false
+sickchill_web_user: username
+sickchill_web_pass: changeme
+sickchill_user: sickchill
+sickchill_group: sickchill
+sickchill_directory: /opt/sickchill
+sickchill_repo_url: https://github.com/SickChill/SickChill.git
 
 # couchpotato config
 couchpotato_restore_backup: false
