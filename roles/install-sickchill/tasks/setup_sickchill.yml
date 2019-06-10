@@ -1,0 +1,42 @@
+- name: Set web_username
+  ini_file:
+    path: "{{ sickchill_directory }}/config.ini"
+    section: General
+    option: web_username
+    value: "{{ sickchill_web_user }}"
+  become: yes
+
+- name: Set web_password
+  ini_file:
+    path: "{{ sickchill_directory }}/config.ini"
+    section: General
+    option: web_password
+    value: "{{ sickchill_web_pass }}"
+  become: yes
+
+- name: Ensure config.ini has the right permissions
+  file:
+    path: "{{ sickchill_directory }}/config.ini"
+    owner: "{{ sickchill_user }}"
+    group: "{{ sickchill_group }}"
+  become: yes
+
+- name: Copy sickchill systemd unit file
+  command: cp {{ sickchill_directory }}/runscripts/init.systemd /etc/systemd/system/sickchill.service
+  become: yes
+
+- name: Ensure sickchill.service has the right permissions
+  file:
+    path: /etc/systemd/system/sickchill.service
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: Enable sickchill service
+  command: systemctl enable sickchill.service
+  become: yes
+
+- name: Start sickchill
+  command: systemctl start sickchill.service
+  become: yes

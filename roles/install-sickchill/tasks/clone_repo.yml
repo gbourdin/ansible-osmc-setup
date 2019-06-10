@@ -1,0 +1,12 @@
+- name: Clone the sickchill repo
+  git:
+    clone: yes
+    update: yes
+    dest: "{{ sickchill_directory }}"
+    repo: "{{ sickchill_repo_url }}"
+    force: yes
+  become: yes
+
+- name: Chown the clone directory
+  command: chown -R {{ sickchill_user }}:{{ sickchill_group }} {{ sickchill_directory }}
+  become: yes

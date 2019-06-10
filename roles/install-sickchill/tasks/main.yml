@@ -2,6 +2,6 @@
 - import_tasks: install_dependencies.yml
 - import_tasks: configure_user.yml
 - import_tasks: clone_repo.yml
-- import_tasks: setup_sickrage.yml
+- import_tasks: setup_sickchill.yml
 - import_tasks: restore_backup.yml
-  when: sickrage_restore_backup
+  when: sickchill_restore_backup

@@ -5,16 +5,16 @@
   become: yes
 
 - name: Install lxml to manage guisettings
-  apt:
-    name: python-lxml
-    state: latest
-    update_cache: yes
-  become: yes
+ apt:
+   name: python-lxml
+   state: latest
+   update_cache: yes
+ become: yes
 
 - name: Change the default web interface port
   xml:
     path: /home/osmc/.kodi/userdata/guisettings.xml
-    xpath: services/webserverport
+    xpath: setting[@id="services.webserverport"]
     value: '"{{kodi_web_interface_port}}"'
 
 - name: Install nginx

@@ -1,0 +1,18 @@
+- name: Stop sickchill
+  command: systemctl stop sickchill.service
+  become: yes
+
+- name: Copy backed up files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ sickchill_directory}}/{{ item }}"
+    owner: "{{ sickchill_user }}"
+    group: "{{ sickchill_group }}"
+  become: yes
+  with_items:
+    - config.ini
+    - sickbeard.db
+
+- name: Start sickchill
+  command: systemctl start sickchill.service
+  become: yes

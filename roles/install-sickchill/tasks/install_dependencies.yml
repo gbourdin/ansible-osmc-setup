@@ -7,5 +7,7 @@
   with_items:
     - git
     - python2.7
-    - nodejs
-    - nodejs-legacy
+    - unrar
+    - git-core
+    - openssl
+    - libssl-dev
