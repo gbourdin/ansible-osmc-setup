@@ -99,3 +99,7 @@ dpkg: warning: 'start-stop-daemon' not found in PATH or not executable
 dpkg: error: 2 expected programs not found in PATH or not executable
 Note: root's PATH should usually contain /usr/local/sbin, /usr/sbin and /sbin
 ```
+
+* rtorrent 0.9.7 is out, but it's not compatible with sickchill so config
+has been downgraded to 0.9.6 for now. (There's an issue on the sickchill side
+that needs to be addressed)
