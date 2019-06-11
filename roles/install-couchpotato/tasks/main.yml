@@ -1,14 +1,9 @@
 - name: Install dependencies
   apt:
-    name: "{{ item }}"
+    name: ['git', 'python2.7', 'python-lxml', 'python-openssl']
     state: latest
     update_cache: yes
   become: yes
-  with_items:
-    - git
-    - python2.7
-    - python-lxml
-    - python-openssl
 
 - name: Add couchpotato group
   group:

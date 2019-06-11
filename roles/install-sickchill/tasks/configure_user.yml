@@ -9,7 +9,7 @@
     name: "{{ sickchill_user }}"
     state: present
     group: "{{ sickchill_group }}"
-    home: "/var/lib/sickchill"
+    home: "{{ sickchill_home }}"
     shell: /bin/bash
   become: yes
 

@@ -1,14 +1,9 @@
 - name: Install dependencies
   apt:
-    name: "{{ item }}"
+    name: ['php7.0', 'php7.0-cli', 'php7.0-curl', 'php7.0-xmlrpc']
     state: latest
     update_cache: yes
   become: yes
-  with_items:
-    - php7.0
-    - php7.0-cli
-    - php7.0-curl
-    - php7.0-xmlrpc
 
 - name: Remove any existing installation
   file:
@@ -21,7 +16,6 @@
     url: https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz
     dest: /opt/ruTorrent-3.8.tar.gz
   become: yes
-
 
 - name: Extract rutorrent
   command: tar xzf ruTorrent-3.8.tar.gz

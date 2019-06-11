@@ -1,0 +1,4 @@
+- import_tasks: install_dependencies.yml
+- import_tasks: configure_user.yml
+- import_tasks: download_release.yml
+- import_tasks: configure_radarr.yml
