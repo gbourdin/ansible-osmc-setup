@@ -30,6 +30,7 @@ sickchill_web_pass: changeme
 sickchill_user: sickchill
 sickchill_group: sickchill
 sickchill_directory: /opt/sickchill
+sichchill_home: /var/lib/sickchill
 sickchill_repo_url: https://github.com/SickChill/SickChill.git
 
 # couchpotato config
@@ -39,6 +40,17 @@ couchpotato_group: couchpotato
 couchpotato_directory: /opt/CouchPotatoServer
 couchpotato_home: /home/couchpotato
 couchpotato_repo_url: https://github.com/CouchPotato/CouchPotatoServer.git
+
+# radarr config
+radarr_restore_backup: false
+radarr_user: radarr
+radarr_group: radarr
+radarr_directory: /opt/radarr
+radarr_data: "{{ radarr_directory }}/appdata/"
+radarr_home: /var/lib/radarr
+radarr_repo_url: https://github.com/Radarr/Radarr.git
+radarr_release: 0.2.0.1344
+radarr_tarball: "https://github.com/Radarr/Radarr/releases/download/v{{ radarr_release }}/Radarr.develop.{{ radarr_release }}.linux.tar.gz"
 
 # This will be specific to your settings and should be overwritten, but
 # you should at least have a downloads mount. Take this as an example

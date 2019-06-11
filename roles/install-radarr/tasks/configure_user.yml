@@ -1,0 +1,37 @@
+- name: Add radarr group
+  group:
+    name: "{{ radarr_group }}"
+    state: present
+  become: yes
+
+- name: Add radarr user
+  user:
+    name: "{{ radarr_user }}"
+    state: present
+    group: "{{ radarr_group }}"
+    home: "{{ radarr_home }}"
+    shell: /bin/bash
+  become: yes
+
+- name: Add radarr user to the osmc group
+  user:
+    name: "{{ radarr_user }}"
+    groups: osmc
+    append: yes
+  become: yes
+
+- name: Add radarr directory
+  file:
+    path: "{{ radarr_directory }}"
+    state: directory
+    owner: "{{ radarr_user }}"
+    group: "{{ radarr_group }}"
+  become: yes
+
+- name: Add radarr data directory
+  file:
+    path: "{{ radarr_data }}"
+    state: directory
+    owner: "{{ radarr_user }}"
+    group: "{{ radarr_group }}"
+  become: yes

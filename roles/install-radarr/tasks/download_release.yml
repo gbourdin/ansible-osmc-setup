@@ -1,0 +1,15 @@
+- name: Download radarr
+  get_url:
+    url: "{{ radarr_tarball }}"
+    dest: "{{ radarr_directory }}"
+  become: yes
+
+- name: Extract radarr
+  command: "tar xzf Radarr.develop.{{ radarr_release }}.linux.tar.gz"
+  args:
+    chdir: "{{ radarr_directory }}"
+  become: yes
+
+- name: Chown the directory
+  command: chown -R {{ radarr_user }}:{{ radarr_group }} {{ radarr_directory }}
+  become: yes

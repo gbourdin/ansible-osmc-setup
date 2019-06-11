@@ -1,0 +1,13 @@
+- name: Copy radarr systemd unit file
+  template:
+    src: radarr.service.j2
+    dest: /etc/systemd/system/radarr.service
+  become: yes
+
+- name: Enable radarr service
+  command: systemctl enable radarr.service
+  become: yes
+
+- name: Start radarr
+  command: systemctl start radarr.service
+  become: yes
