@@ -30,7 +30,7 @@ sickchill_web_pass: changeme
 sickchill_user: sickchill
 sickchill_group: sickchill
 sickchill_directory: /opt/sickchill
-sichchill_home: /var/lib/sickchill
+sickchill_home: /var/lib/sickchill
 sickchill_repo_url: https://github.com/SickChill/SickChill.git
 
 # couchpotato config
