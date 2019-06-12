@@ -1,0 +1,4 @@
+- import_tasks: configure_user.yml
+- import_tasks: download_nzbget.yml
+- import_tasks: install_nzbget.yml
+- import_tasks: configure_nzbget.yml

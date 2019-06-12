@@ -1,0 +1,29 @@
+- name: Add nzbget group
+  group:
+    name: "{{ nzbget_group }}"
+    state: present
+  become: yes
+
+- name: Add nzbget user
+  user:
+    name: "{{ nzbget_user }}"
+    state: present
+    group: "{{ nzbget_group }}"
+    home: "{{ nzbget_home }}"
+    shell: /bin/bash
+  become: yes
+
+- name: Add nzbget user to the osmc group
+  user:
+    name: "{{ nzbget_user }}"
+    groups: osmc
+    append: yes
+  become: yes
+
+- name: Add nzbget directory
+  file:
+    path: "{{ nzbget_directory }}"
+    state: directory
+    owner: "{{ nzbget_user }}"
+    group: "{{ nzbget_group }}"
+  become: yes

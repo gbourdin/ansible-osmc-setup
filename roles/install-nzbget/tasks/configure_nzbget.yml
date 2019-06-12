@@ -1,0 +1,13 @@
+- name: Copy nzbget systemd unit file
+  template:
+    src: nzbget.service.j2
+    dest: /etc/systemd/system/nzbget.service
+  become: yes
+
+- name: Enable nzbget service
+  command: systemctl enable nzbget.service
+  become: yes
+
+- name: Start nzbget
+  command: systemctl start nzbget.service
+  become: yes
