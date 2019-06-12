@@ -1,0 +1,5 @@
+- name: Download nzbget installer
+  get_url:
+    url: "{{ nzbget_install_script_url }}"
+    dest: "{{ nzbget_home }}/{{ nzbget_install_script_name }}"
+  become: yes

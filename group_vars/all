@@ -54,6 +54,15 @@ radarr_repo_url: https://github.com/Radarr/Radarr.git
 radarr_release: 0.2.0.1344
 radarr_tarball: "https://github.com/Radarr/Radarr/releases/download/v{{ radarr_release }}/Radarr.develop.{{ radarr_release }}.linux.tar.gz"
 
+
+# nzbget config
+nzbget_user: nzbget
+nzbget_group: nzbget
+nzbget_directory: /opt/nzbget/nzbget
+nzbget_home: /opt/nzbget
+nzbget_install_script_url: https://nzbget.net/download/nzbget-latest-bin-linux.run
+nzbget_install_script_name: nzbget-latest-bin-linux.run
+
 # This will be specific to your settings and should be overwritten, but
 # you should at least have a downloads mount. Take this as an example
 # You should put your settings for this variable in:

@@ -1,0 +1,9 @@
+- name: Install nzbget
+  shell: "sh {{ nzbget_install_script_name }} --destdir {{ nzbget_directory }}"
+  args:
+    chdir: "{{ nzbget_home }}"
+  become: yes
+
+- name: Chown the directory
+  command: chown -R {{ nzbget_user }}:{{ nzbget_group }} {{ nzbget_home }}
+  become: yes
