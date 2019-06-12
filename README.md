@@ -13,6 +13,7 @@ These can be run on a freshly installed system.
 * sickchill - To automate TV Show downloads
 * radarr - To Automate Movie downloads
 * chouchpotato (replaced by radarr, script still available if you want it)
+* nzbget
 
 ## How to use
 ### Clone this repo
