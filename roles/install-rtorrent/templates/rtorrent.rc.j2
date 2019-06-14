@@ -34,7 +34,7 @@ network.port_random.set = no
 ## (conservative settings for 'private' trackers, change for 'public')
 dht.mode.set = disable
 protocol.pex.set = no
-trackers.use_udp.set = no
+trackers.use_udp.set = yes
 
 # Encryption options, set to none (default) or any combination of the following:
 # allow_incoming, try_outgoing, require, require_RC4, enable_retry, prefer_plaintext
@@ -76,7 +76,8 @@ execute.nothrow = sh, -c, (cat, "echo >",\
 
 ## Other operational settings (check & adapt)
 encoding.add = utf8
-system.umask.set = 0027
+# 644 (rw-r--r--)
+system.umask.set = 0022
 system.cwd.set = (directory.default)
 network.http.dns_cache_timeout.set = 25
 schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
@@ -120,6 +121,12 @@ log.add_output = "info", "log"
 #log.add_output = "tracker_debug", "log"
 
 network.scgi.open_port = 127.0.0.1:{{ rtorrent_scgi_port }}
+
+# Simple move on completion to {{ downloads_mount_point }}/completed/LABEL/
+# Uncomment if wanted
+# method.insert = d.get_finished_dir, simple, "cat={{ downloads_mount_point }}/completed/,$d.custom1="
+# method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+# method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,$d.get_finished_dir="
 
 
 # Config drop ins
