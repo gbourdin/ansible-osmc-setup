@@ -17,7 +17,7 @@
 
 - name: Add mono-project repo
   apt_repository: >
-    repo='https://download.mono-project.com/repo/debian stable-stretch main'
+    repo='deb https://download.mono-project.com/repo/debian stable-stretch main'
     state=present
     update_cache=yes
   become: yes
