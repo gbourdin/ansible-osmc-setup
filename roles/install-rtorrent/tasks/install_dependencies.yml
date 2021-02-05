@@ -2,7 +2,7 @@
   apt:
     name: ['automake', 'autotools-dev', 'build-essential', 'curl', 'curl', 
         'ffmpeg', 'libcppunit-dev', 'libcppunit-dev', 'libcppunit-dev', 
-        'libcurl3-dev', 'libncurses-dev', 'libsigc++-2.0-dev', 'libssl1.0-dev',
+        'libcurl3-dev', 'libncurses-dev', 'libsigc++-2.0-dev', 'libssl-dev',
         'libtool', 'libtool', 'm4', 'mediainfo', 'pkg-config', 'screen',
         'subversion', 'unrar', 'unzip', 'zlib1g-dev']
     state: latest

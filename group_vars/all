@@ -19,8 +19,8 @@ rtorrent_max_uploads: 10
 rtorrent_max_downloads_global: 2
 rtorrent_max_uploads_global: 20
 rtorrent_scgi_port: 5000
-rtorrent_version: 0.9.6
-libtorrent_version: 0.13.6
+rtorrent_version: 0.9.8
+libtorrent_version: 0.13.8
 
 # rutorrent config
 rutorrent_rpc_mountpoint: /RPC2
