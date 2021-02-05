@@ -1,6 +1,6 @@
 - name: Install dependencies
   apt:
-    name: ['git', 'python2.7', 'unrar', 'git-core', 'openssl', 'libssl-dev']
+    name: ['git', 'python3.7', 'unrar', 'git-core', 'openssl', 'libssl-dev']
     state: latest
     update_cache: yes
   become: yes

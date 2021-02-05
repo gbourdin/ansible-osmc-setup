@@ -22,7 +22,7 @@
   become: yes
 
 - name: Copy sickchill systemd unit file
-  command: cp {{ sickchill_directory }}/runscripts/init.systemd /etc/systemd/system/sickchill.service
+  command: cp {{ sickchill_directory }}/contrib/runscripts/init.systemd /etc/systemd/system/sickchill.service
   become: yes
 
 - name: Ensure sickchill.service has the right permissions
