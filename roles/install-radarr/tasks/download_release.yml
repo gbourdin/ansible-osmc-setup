@@ -5,7 +5,7 @@
   become: yes
 
 - name: Extract radarr
-  command: "tar xzf Radarr.develop.{{ radarr_release }}.linux.tar.gz"
+  command: "tar xzf Radarr.master.{{ radarr_release }}.linux.tar.gz"
   args:
     chdir: "{{ radarr_directory }}"
   become: yes
