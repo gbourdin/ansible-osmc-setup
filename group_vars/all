@@ -51,8 +51,8 @@ radarr_directory: /opt/radarr
 radarr_data: "{{ radarr_directory }}/appdata/"
 radarr_home: /var/lib/radarr
 radarr_repo_url: https://github.com/Radarr/Radarr.git
-radarr_release: 0.2.0.1344
-radarr_tarball: "https://github.com/Radarr/Radarr/releases/download/v{{ radarr_release }}/Radarr.develop.{{ radarr_release }}.linux.tar.gz"
+radarr_release: 3.0.2.4552
+radarr_tarball: "https://github.com/Radarr/Radarr/releases/download/v{{ radarr_release }}/Radarr.master.{{ radarr_release }}.linux.tar.gz"
 
 
 # nzbget config
